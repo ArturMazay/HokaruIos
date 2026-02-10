@@ -15,6 +15,10 @@ struct HokaruApp: App {
            WindowGroup {
                ContentView()
                    .environmentObject(delegate) // обязательно
+                   .onOpenURL { url in
+                       print("🔗 [SwiftUI] onOpenURL вызван с URL: \(url.absoluteString)")
+                       delegate.handleDeeplink(url)
+                   }
            }
        }
 }
